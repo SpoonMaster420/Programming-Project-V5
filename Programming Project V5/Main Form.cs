@@ -74,12 +74,13 @@ namespace Programming_Project_V5
 
             if(colorDialog.ShowDialog() == DialogResult.OK)
             {
-                btnCustomer.ForeColor = colorDialog.Color;
-                btnLoans.ForeColor = colorDialog.Color;
-                btnLogout.ForeColor = colorDialog.Color;
-                lblDateandTime.ForeColor = colorDialog.Color;
-                lblUserLoggedIn.ForeColor = colorDialog.Color;
-                preferencesToolStripMenuitem.ForeColor = colorDialog.Color;
+                //btnCustomer.ForeColor = colorDialog.Color;
+                //btnLoans.ForeColor = colorDialog.Color;
+                //btnLogout.ForeColor = colorDialog.Color;
+                //lblDateandTime.ForeColor = colorDialog.Color;
+                this.ForeColor = colorDialog.Color;
+                //lblUserLoggedIn.ForeColor = colorDialog.Color;
+                //preferencesToolStripMenuitem.ForeColor = colorDialog.Color;
 
             }
         }
@@ -89,14 +90,26 @@ namespace Programming_Project_V5
             var colorDialog = new ColorDialog();
             if(colorDialog.ShowDialog() == DialogResult.OK)
             {
-                btnCustomer.BackColor = colorDialog.Color;
-                btnLoans.BackColor = colorDialog.Color;
-                btnLogout.BackColor = colorDialog.Color;
-                lblDateandTime.BackColor = colorDialog.Color;
-                lblUserLoggedIn.BackColor = colorDialog.Color;
+                //btnCustomer.BackColor = colorDialog.Color;
+                //btnLoans.BackColor = colorDialog.Color;
+                //btnLogout.BackColor = colorDialog.Color;
+                //lblDateandTime.BackColor = colorDialog.Color;
+                //lblUserLoggedIn.BackColor = colorDialog.Color;
                 this.BackColor = colorDialog.Color;
-                preferencesToolStripMenuitem.BackColor = colorDialog.Color;
+                //preferencesToolStripMenuitem.BackColor = colorDialog.Color;
             }
+        }
+
+        private void btnCustomer_Click(object sender, EventArgs e)
+        {
+            Customers cust = new Customers();
+            cust.ShowDialog();
+        }
+
+        private void btnLoans_Click(object sender, EventArgs e)
+        {
+            Loans loans = new Loans();
+            loans.ShowDialog();
         }
     }
 

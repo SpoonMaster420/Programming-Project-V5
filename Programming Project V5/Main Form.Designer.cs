@@ -79,6 +79,7 @@
             this.btnCustomer.TabIndex = 3;
             this.btnCustomer.Text = "Customers";
             this.btnCustomer.UseVisualStyleBackColor = true;
+            this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
             // 
             // btnLoans
             // 
@@ -88,6 +89,7 @@
             this.btnLoans.TabIndex = 4;
             this.btnLoans.Text = "Loans";
             this.btnLoans.UseVisualStyleBackColor = true;
+            this.btnLoans.Click += new System.EventHandler(this.btnLoans_Click);
             // 
             // preferencesToolStripMenuitem
             // 

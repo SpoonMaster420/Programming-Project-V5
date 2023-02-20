@@ -6,6 +6,8 @@ namespace Programming_Project_V5
 {
     public partial class Login : Form
     {
+        string Connect = DBSettings.CString;
+        OleDbConnection connect = DBSettings.connection;
         public Login()
         {
             InitializeComponent();
@@ -24,7 +26,7 @@ namespace Programming_Project_V5
 
         public void btnLogin_Click(object sender, EventArgs e)
         {
-            string CString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\"C:\\Users\\carla\\Documents\\Computer Science\\NEA Progamming Project\\Programming Project V5\\DBofAll.mdb\"";
+            //string CString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\"C:\\Users\\carla\\Documents\\Computer Science\\NEA Progamming Project\\Programming Project V5\\DBofAll.mdb\"";
 
             string firstname, id;
             firstname = txtEmpFirst.Text;
@@ -32,10 +34,10 @@ namespace Programming_Project_V5
 
             string query = "SELECT COUNT(*) FROM EmpTable WHERE EmpName = '" + firstname + "' AND ID = '" + id + "'";
 
-            using(OleDbConnection connection = new OleDbConnection(CString))
+            using(connect)
             { 
-                OleDbCommand command = new OleDbCommand(query, connection);
-                connection.Open();
+                OleDbCommand command = new OleDbCommand(query, connect);
+                connect.Open();
                 int count = (int)command.ExecuteScalar();
 
                 if(count == 1)
