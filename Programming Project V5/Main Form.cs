@@ -92,6 +92,7 @@ namespace Programming_Project_V5
                 preferencesToolStripMenuitem.ForeColor = this.settings.fcolor;
                 btnCustomer.ForeColor = this.settings.fcolor;
                 btnLoans.ForeColor = this.settings.fcolor;
+                btnGames.ForeColor = this.settings.fcolor;
                 btnLogout.ForeColor = this.settings.fcolor;
 
             }
@@ -108,8 +109,9 @@ namespace Programming_Project_V5
                 
                 this.BackColor = this.settings.bcolor;
                 preferencesToolStripMenuitem.BackColor = this.settings.bcolor;
-                btnCustomer.BackColor = this.settings.fcolor;
+                btnCustomer.BackColor = this.settings.bcolor;
                 btnLoans.BackColor = this.settings.bcolor;
+                btnGames.BackColor = this.settings.bcolor;
                 btnLogout.BackColor = this.settings.bcolor;
             }
         }
@@ -124,6 +126,12 @@ namespace Programming_Project_V5
         {
             Loans loans = new Loans();
             loans.Show();
+        }
+
+        private void btnGames_Click(object sender, EventArgs e)
+        {
+            Games games = new Games();
+            games.Show();
         }
     }
 

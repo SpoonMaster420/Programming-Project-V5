@@ -39,6 +39,7 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.btnGames = new System.Windows.Forms.Button();
             this.preferencesToolStripMenuitem.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,10 +134,21 @@
             this.toolStripButton3.Text = "Background Colour Settings";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
+            // btnGames
+            // 
+            this.btnGames.Location = new System.Drawing.Point(340, 139);
+            this.btnGames.Name = "btnGames";
+            this.btnGames.Size = new System.Drawing.Size(100, 80);
+            this.btnGames.TabIndex = 7;
+            this.btnGames.Text = "Games";
+            this.btnGames.UseVisualStyleBackColor = true;
+            this.btnGames.Click += new System.EventHandler(this.btnGames_Click);
+            // 
             // Main_Form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnGames);
             this.Controls.Add(this.preferencesToolStripMenuitem);
             this.Controls.Add(this.btnLoans);
             this.Controls.Add(this.btnCustomer);
@@ -167,5 +179,6 @@
         private ToolStripButton toolStripButton2;
         private ToolStripButton toolStripButton3;
         private ColorDialog colorDialog1;
+        private Button btnGames;
     }
 }

@@ -23,6 +23,7 @@ namespace Programming_Project_V5
             CmBxCustID.DataSource = null;
 
             this.settings = SettingsManager.GetSettings();
+            this.Font = this.settings.font;
             this.BackColor = this.settings.bcolor;
             this.ForeColor = this.settings.fcolor;
 
