@@ -20,7 +20,7 @@ namespace Programming_Project_V5
         {
             InitializeComponent();
 
-            CmBxCustID.DataSource = null;
+            //CmBxCustID.DataSource = null;
 
             this.settings = SettingsManager.GetSettings();
             this.Font = this.settings.font;

@@ -39,6 +39,13 @@
             this.txtGameRating = new System.Windows.Forms.TextBox();
             this.txtGamePlatform = new System.Windows.Forms.TextBox();
             this.btnSaveGameDetails = new System.Windows.Forms.Button();
+            this.CmBxGameID = new System.Windows.Forms.ComboBox();
+            this.txtSelectedGameID = new System.Windows.Forms.TextBox();
+            this.txtSelectedGameName = new System.Windows.Forms.TextBox();
+            this.txtSelectedGameReleaseDate = new System.Windows.Forms.TextBox();
+            this.txtSelectedGameStock = new System.Windows.Forms.TextBox();
+            this.txtSelectedGameRating = new System.Windows.Forms.TextBox();
+            this.txtSelectedGamePlatform = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblGameName
@@ -131,10 +138,68 @@
             this.btnSaveGameDetails.UseVisualStyleBackColor = true;
             this.btnSaveGameDetails.Click += new System.EventHandler(this.btnSaveGameDetails_Click);
             // 
+            // CmBxGameID
+            // 
+            this.CmBxGameID.FormattingEnabled = true;
+            this.CmBxGameID.Location = new System.Drawing.Point(34, 32);
+            this.CmBxGameID.Name = "CmBxGameID";
+            this.CmBxGameID.Size = new System.Drawing.Size(159, 23);
+            this.CmBxGameID.TabIndex = 11;
+            this.CmBxGameID.SelectedIndexChanged += new System.EventHandler(this.CmBxGameID_SelectedIndexChanged);
+            // 
+            // txtSelectedGameID
+            // 
+            this.txtSelectedGameID.Location = new System.Drawing.Point(34, 61);
+            this.txtSelectedGameID.Name = "txtSelectedGameID";
+            this.txtSelectedGameID.Size = new System.Drawing.Size(159, 23);
+            this.txtSelectedGameID.TabIndex = 12;
+            // 
+            // txtSelectedGameName
+            // 
+            this.txtSelectedGameName.Location = new System.Drawing.Point(34, 90);
+            this.txtSelectedGameName.Name = "txtSelectedGameName";
+            this.txtSelectedGameName.Size = new System.Drawing.Size(159, 23);
+            this.txtSelectedGameName.TabIndex = 13;
+            // 
+            // txtSelectedGameReleaseDate
+            // 
+            this.txtSelectedGameReleaseDate.Location = new System.Drawing.Point(34, 119);
+            this.txtSelectedGameReleaseDate.Name = "txtSelectedGameReleaseDate";
+            this.txtSelectedGameReleaseDate.Size = new System.Drawing.Size(159, 23);
+            this.txtSelectedGameReleaseDate.TabIndex = 14;
+            // 
+            // txtSelectedGameStock
+            // 
+            this.txtSelectedGameStock.Location = new System.Drawing.Point(34, 148);
+            this.txtSelectedGameStock.Name = "txtSelectedGameStock";
+            this.txtSelectedGameStock.Size = new System.Drawing.Size(159, 23);
+            this.txtSelectedGameStock.TabIndex = 15;
+            // 
+            // txtSelectedGameRating
+            // 
+            this.txtSelectedGameRating.Location = new System.Drawing.Point(34, 177);
+            this.txtSelectedGameRating.Name = "txtSelectedGameRating";
+            this.txtSelectedGameRating.Size = new System.Drawing.Size(159, 23);
+            this.txtSelectedGameRating.TabIndex = 16;
+            // 
+            // txtSelectedGamePlatform
+            // 
+            this.txtSelectedGamePlatform.Location = new System.Drawing.Point(34, 206);
+            this.txtSelectedGamePlatform.Name = "txtSelectedGamePlatform";
+            this.txtSelectedGamePlatform.Size = new System.Drawing.Size(159, 23);
+            this.txtSelectedGamePlatform.TabIndex = 17;
+            // 
             // Games
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtSelectedGamePlatform);
+            this.Controls.Add(this.txtSelectedGameRating);
+            this.Controls.Add(this.txtSelectedGameStock);
+            this.Controls.Add(this.txtSelectedGameReleaseDate);
+            this.Controls.Add(this.txtSelectedGameName);
+            this.Controls.Add(this.txtSelectedGameID);
+            this.Controls.Add(this.CmBxGameID);
             this.Controls.Add(this.btnSaveGameDetails);
             this.Controls.Add(this.txtGamePlatform);
             this.Controls.Add(this.txtGameRating);
@@ -166,5 +231,12 @@
         private TextBox txtGameRating;
         private TextBox txtGamePlatform;
         private Button btnSaveGameDetails;
+        private ComboBox CmBxGameID;
+        private TextBox txtSelectedGameID;
+        private TextBox txtSelectedGameName;
+        private TextBox txtSelectedGameReleaseDate;
+        private TextBox txtSelectedGameStock;
+        private TextBox txtSelectedGameRating;
+        private TextBox txtSelectedGamePlatform;
     }
 }

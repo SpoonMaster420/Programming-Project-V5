@@ -25,6 +25,18 @@ namespace Programming_Project_V5
             this.BackColor = this.settings.bcolor;
             this.ForeColor = this.settings.fcolor;
 
+            using(OleDbConnection connect = new OleDbConnection(Cstr))
+            {
+                connect.Open();
+                OleDbCommand command = new OleDbCommand("SELECT ID FROM GameTable", connect);
+                OleDbDataAdapter da = new OleDbDataAdapter(command);
+                DataTable table = new DataTable();
+                da.Fill(table);
+                CmBxGameID.DisplayMember = "ID";
+                CmBxGameID.ValueMember = "ID";
+                CmBxGameID.DataSource = table;
+            }
+
         }
 
         private void btnSaveGameDetails_Click(object sender, EventArgs e)
@@ -50,7 +62,7 @@ namespace Programming_Project_V5
                 command.Parameters.AddWithValue("@platform", GamePlatform);
                 command.Connection = connect;
                 command.ExecuteNonQuery();
-                }
+            }
 
             MessageBox.Show("Game Details have been saved!", "Saved!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             txtGameName.Text = "";
@@ -58,6 +70,43 @@ namespace Programming_Project_V5
             txtGameStock.Text = "";
             txtGameRating.Text = "";
             txtGamePlatform.Text = "";
+
+            using(OleDbConnection Refresh = new OleDbConnection(Cstr))
+            {
+                OleDbCommand refr = new OleDbCommand("SELECT ID FROM GameTable", Refresh);
+                OleDbDataAdapter adapter = new OleDbDataAdapter(refr);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                CmBxGameID.DisplayMember = "ID";
+                CmBxGameID.ValueMember = "ID";
+                CmBxGameID.DataSource = table;
+            }
+        }
+
+        private void CmBxGameID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedGameID = (string)CmBxGameID.SelectedValue;
+            using(OleDbConnection connect = new OleDbConnection(Cstr))
+            {
+                connect.Open();
+                OleDbCommand command = new OleDbCommand("SELECT * FROM GameTable WHERE ID=@id", connect);
+                command.Parameters.AddWithValue("@id", selectedGameID);
+
+                OleDbDataReader dr = command.ExecuteReader();
+                if (dr.Read())
+                {
+                    txtSelectedGameID.Text = dr["ID"].ToString();
+                    txtSelectedGameName.Text = dr["GameName"].ToString();
+                    txtSelectedGameReleaseDate.Text = dr["GameReleaseDate"].ToString();
+                    txtSelectedGameStock.Text = dr["GameStock"].ToString();
+                    txtSelectedGameRating.Text = dr["GameRating"].ToString();
+                    txtSelectedGamePlatform.Text = dr["GamePlatform"].ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Unable to retrieve Game Details", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
