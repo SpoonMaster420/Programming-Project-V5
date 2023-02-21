@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace Programming_Project_V5
 {
@@ -25,7 +27,7 @@ namespace Programming_Project_V5
             this.BackColor = this.settings.bcolor;
             this.ForeColor = this.settings.fcolor;
 
-            using(OleDbConnection connect = new OleDbConnection(Cstr))
+            using (OleDbConnection connect = new OleDbConnection(Cstr))
             {
                 connect.Open();
                 OleDbCommand command = new OleDbCommand("SELECT ID FROM GameTable", connect);
@@ -50,7 +52,7 @@ namespace Programming_Project_V5
             Random random = new Random();
             int GameID = random.Next(1000, 9999);
 
-            using(OleDbConnection connect = new OleDbConnection(Cstr))
+            using (OleDbConnection connect = new OleDbConnection(Cstr))
             {
                 connect.Open();
                 OleDbCommand command = new OleDbCommand("INSERT INTO GameTable (ID, GameName, GameReleaseDate, GameStock, GameRating, GamePlatform) VALUES (@id, @name, @date, @stock, @rating, @platform)");
@@ -71,7 +73,7 @@ namespace Programming_Project_V5
             txtGameRating.Text = "";
             txtGamePlatform.Text = "";
 
-            using(OleDbConnection Refresh = new OleDbConnection(Cstr))
+            using (OleDbConnection Refresh = new OleDbConnection(Cstr))
             {
                 OleDbCommand refr = new OleDbCommand("SELECT ID FROM GameTable", Refresh);
                 OleDbDataAdapter adapter = new OleDbDataAdapter(refr);
@@ -86,7 +88,7 @@ namespace Programming_Project_V5
         private void CmBxGameID_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedGameID = (string)CmBxGameID.SelectedValue;
-            using(OleDbConnection connect = new OleDbConnection(Cstr))
+            using (OleDbConnection connect = new OleDbConnection(Cstr))
             {
                 connect.Open();
                 OleDbCommand command = new OleDbCommand("SELECT * FROM GameTable WHERE ID=@id", connect);
@@ -101,6 +103,8 @@ namespace Programming_Project_V5
                     txtSelectedGameStock.Text = dr["GameStock"].ToString();
                     txtSelectedGameRating.Text = dr["GameRating"].ToString();
                     txtSelectedGamePlatform.Text = dr["GamePlatform"].ToString();
+
+                    
                 }
                 else
                 {
@@ -108,5 +112,18 @@ namespace Programming_Project_V5
                 }
             }
         }
+
+        
+
     }
 }
+        
+
+    
+
+
+
+
+
+
+

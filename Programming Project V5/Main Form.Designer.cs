@@ -74,21 +74,29 @@
             // 
             // btnCustomer
             // 
+            this.btnCustomer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCustomer.BackgroundImage")));
+            this.btnCustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCustomer.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCustomer.Location = new System.Drawing.Point(119, 139);
             this.btnCustomer.Name = "btnCustomer";
             this.btnCustomer.Size = new System.Drawing.Size(100, 80);
             this.btnCustomer.TabIndex = 3;
             this.btnCustomer.Text = "Customers";
+            this.btnCustomer.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCustomer.UseVisualStyleBackColor = true;
             this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
             // 
             // btnLoans
             // 
+            this.btnLoans.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLoans.BackgroundImage")));
+            this.btnLoans.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnLoans.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnLoans.Location = new System.Drawing.Point(565, 139);
             this.btnLoans.Name = "btnLoans";
             this.btnLoans.Size = new System.Drawing.Size(100, 80);
             this.btnLoans.TabIndex = 4;
             this.btnLoans.Text = "Loans";
+            this.btnLoans.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnLoans.UseVisualStyleBackColor = true;
             this.btnLoans.Click += new System.EventHandler(this.btnLoans_Click);
             // 
@@ -136,11 +144,15 @@
             // 
             // btnGames
             // 
+            this.btnGames.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGames.BackgroundImage")));
+            this.btnGames.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGames.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnGames.Location = new System.Drawing.Point(340, 139);
             this.btnGames.Name = "btnGames";
             this.btnGames.Size = new System.Drawing.Size(100, 80);
             this.btnGames.TabIndex = 7;
             this.btnGames.Text = "Games";
+            this.btnGames.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnGames.UseVisualStyleBackColor = true;
             this.btnGames.Click += new System.EventHandler(this.btnGames_Click);
             // 
