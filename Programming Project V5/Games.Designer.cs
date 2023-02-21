@@ -143,7 +143,7 @@
             this.CmBxGameID.FormattingEnabled = true;
             this.CmBxGameID.Location = new System.Drawing.Point(34, 32);
             this.CmBxGameID.Name = "CmBxGameID";
-            this.CmBxGameID.Size = new System.Drawing.Size(159, 23);
+            this.CmBxGameID.Size = new System.Drawing.Size(188, 23);
             this.CmBxGameID.TabIndex = 11;
             this.CmBxGameID.SelectedIndexChanged += new System.EventHandler(this.CmBxGameID_SelectedIndexChanged);
             // 
@@ -151,42 +151,42 @@
             // 
             this.txtSelectedGameID.Location = new System.Drawing.Point(34, 61);
             this.txtSelectedGameID.Name = "txtSelectedGameID";
-            this.txtSelectedGameID.Size = new System.Drawing.Size(159, 23);
+            this.txtSelectedGameID.Size = new System.Drawing.Size(188, 23);
             this.txtSelectedGameID.TabIndex = 12;
             // 
             // txtSelectedGameName
             // 
             this.txtSelectedGameName.Location = new System.Drawing.Point(34, 90);
             this.txtSelectedGameName.Name = "txtSelectedGameName";
-            this.txtSelectedGameName.Size = new System.Drawing.Size(159, 23);
+            this.txtSelectedGameName.Size = new System.Drawing.Size(188, 23);
             this.txtSelectedGameName.TabIndex = 13;
             // 
             // txtSelectedGameReleaseDate
             // 
             this.txtSelectedGameReleaseDate.Location = new System.Drawing.Point(34, 119);
             this.txtSelectedGameReleaseDate.Name = "txtSelectedGameReleaseDate";
-            this.txtSelectedGameReleaseDate.Size = new System.Drawing.Size(159, 23);
+            this.txtSelectedGameReleaseDate.Size = new System.Drawing.Size(188, 23);
             this.txtSelectedGameReleaseDate.TabIndex = 14;
             // 
             // txtSelectedGameStock
             // 
             this.txtSelectedGameStock.Location = new System.Drawing.Point(34, 148);
             this.txtSelectedGameStock.Name = "txtSelectedGameStock";
-            this.txtSelectedGameStock.Size = new System.Drawing.Size(159, 23);
+            this.txtSelectedGameStock.Size = new System.Drawing.Size(188, 23);
             this.txtSelectedGameStock.TabIndex = 15;
             // 
             // txtSelectedGameRating
             // 
             this.txtSelectedGameRating.Location = new System.Drawing.Point(34, 177);
             this.txtSelectedGameRating.Name = "txtSelectedGameRating";
-            this.txtSelectedGameRating.Size = new System.Drawing.Size(159, 23);
+            this.txtSelectedGameRating.Size = new System.Drawing.Size(188, 23);
             this.txtSelectedGameRating.TabIndex = 16;
             // 
             // txtSelectedGamePlatform
             // 
             this.txtSelectedGamePlatform.Location = new System.Drawing.Point(34, 206);
             this.txtSelectedGamePlatform.Name = "txtSelectedGamePlatform";
-            this.txtSelectedGamePlatform.Size = new System.Drawing.Size(159, 23);
+            this.txtSelectedGamePlatform.Size = new System.Drawing.Size(188, 23);
             this.txtSelectedGamePlatform.TabIndex = 17;
             // 
             // Games
