@@ -7,11 +7,14 @@ namespace Programming_Project_V5
 {
     public partial class Main_Form : Form
     {
+        private Settings settings;
         private System.Windows.Forms.Timer timer;
         public Main_Form()
         {
             InitializeComponent();
             updateUserNameLabel();
+
+            this.settings = SettingsManager.GetSettings();
 
             timer = new System.Windows.Forms.Timer();
             timer.Interval = 1000;
@@ -56,11 +59,17 @@ namespace Programming_Project_V5
             var fontDialog = new FontDialog();
             if(fontDialog.ShowDialog() == DialogResult.OK)
             {
-                Font font = fontDialog.Font;
-                Color color = fontDialog.Color;
+                
 
-                this.Font = font;
-                this.ForeColor = color;
+                //Font font = fontDialog.Font;
+                //Color color = fontDialog.Color;
+
+                //Settings options = new Settings();
+
+                this.settings.font = fontDialog.Font;
+
+                this.Font = this.settings.font;
+                preferencesToolStripMenuitem.Font = this.settings.font;
 
             }
         }
@@ -74,13 +83,16 @@ namespace Programming_Project_V5
 
             if(colorDialog.ShowDialog() == DialogResult.OK)
             {
-                //btnCustomer.ForeColor = colorDialog.Color;
-                //btnLoans.ForeColor = colorDialog.Color;
-                //btnLogout.ForeColor = colorDialog.Color;
-                //lblDateandTime.ForeColor = colorDialog.Color;
-                this.ForeColor = colorDialog.Color;
-                //lblUserLoggedIn.ForeColor = colorDialog.Color;
-                //preferencesToolStripMenuitem.ForeColor = colorDialog.Color;
+                //Settings options = new Settings();
+
+                this.settings.fcolor = colorDialog.Color;
+
+                
+                this.ForeColor = this.settings.fcolor;
+                preferencesToolStripMenuitem.ForeColor = this.settings.fcolor;
+                btnCustomer.ForeColor = this.settings.fcolor;
+                btnLoans.ForeColor = this.settings.fcolor;
+                btnLogout.ForeColor = this.settings.fcolor;
 
             }
         }
@@ -90,26 +102,28 @@ namespace Programming_Project_V5
             var colorDialog = new ColorDialog();
             if(colorDialog.ShowDialog() == DialogResult.OK)
             {
-                //btnCustomer.BackColor = colorDialog.Color;
-                //btnLoans.BackColor = colorDialog.Color;
-                //btnLogout.BackColor = colorDialog.Color;
-                //lblDateandTime.BackColor = colorDialog.Color;
-                //lblUserLoggedIn.BackColor = colorDialog.Color;
-                this.BackColor = colorDialog.Color;
-                //preferencesToolStripMenuitem.BackColor = colorDialog.Color;
+                //Settings options = new Settings();
+
+                this.settings.bcolor = colorDialog.Color;
+                
+                this.BackColor = this.settings.bcolor;
+                preferencesToolStripMenuitem.BackColor = this.settings.bcolor;
+                btnCustomer.BackColor = this.settings.fcolor;
+                btnLoans.BackColor = this.settings.bcolor;
+                btnLogout.BackColor = this.settings.bcolor;
             }
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
         {
             Customers cust = new Customers();
-            cust.ShowDialog();
+            cust.Show();
         }
 
         private void btnLoans_Click(object sender, EventArgs e)
         {
             Loans loans = new Loans();
-            loans.ShowDialog();
+            loans.Show();
         }
     }
 

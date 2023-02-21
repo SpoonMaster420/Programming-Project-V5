@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Programming_Project_V5
 {
-    public class ColorAndFontSettings
+    public class Settings
     {
-
+        public Color fcolor { get; set; }
+        public Font? font { get; set; }
+        public Color bcolor { get; set; }
     }
 }
