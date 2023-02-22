@@ -14,6 +14,8 @@ namespace Programming_Project_V5
 {
     public partial class Loans : Form
     {
+        private Customer selectedCustomer;
+
         private List<Game> availableGames;
         private List<Game> rentedGames;
 
@@ -39,6 +41,7 @@ namespace Programming_Project_V5
         private void Loans_Load(object sender, EventArgs e)
         {
             LoadGames();
+            LoadCustomers();
         }
 
         private void LoadGames()
@@ -124,6 +127,36 @@ namespace Programming_Project_V5
         {
             this.Close();
         }
+
+        private void LoadCustomers()
+        {
+            using(OleDbConnection connect = new OleDbConnection(CStr))
+            {
+                connect.Open();
+
+                OleDbCommand cmd = new OleDbCommand("SELECT ID, CustFirst, CustLast, CustEmail, CustPhone FROM CustTable ", connect);
+                OleDbDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    int id = Convert.ToInt32(dr["ID"]);
+                    string fName = dr["CustFirst"].ToString();
+                    string lName = dr["CustLast"].ToString();
+                    string email = dr["CustEmail"].ToString();
+                    string phone = dr["CustPhone"].ToString();
+
+                    Customer customer = new Customer(id, fName, lName, email, phone);
+                    lbCustomers.Items.Add(customer);
+                }
+            }
+        }
+
+        private void lbCustomers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedCustomer = (Customer)lbCustomers.SelectedItem;
+        }
+
+
     }
 
     
