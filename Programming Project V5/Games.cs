@@ -48,6 +48,7 @@ namespace Programming_Project_V5
             string GameStock = txtGameStock.Text;
             string GameRating = txtGameRating.Text;
             string GamePlatform = txtGamePlatform.Text;
+            string GameRentPrice = txtGameRentPrice.Text;
 
             Random random = new Random();
             int GameID = random.Next(1000, 9999);
@@ -55,13 +56,14 @@ namespace Programming_Project_V5
             using (OleDbConnection connect = new OleDbConnection(Cstr))
             {
                 connect.Open();
-                OleDbCommand command = new OleDbCommand("INSERT INTO GameTable (ID, GameName, GameReleaseDate, GameStock, GameRating, GamePlatform) VALUES (@id, @name, @date, @stock, @rating, @platform)");
+                OleDbCommand command = new OleDbCommand("INSERT INTO GameTable (ID, GameName, GameReleaseDate, GameStock, GameRating, GamePlatform, GameRentPrice) VALUES (@id, @name, @date, @stock, @rating, @platform, @price)");
                 command.Parameters.AddWithValue("@id", GameID);
                 command.Parameters.AddWithValue("@name", GameName);
                 command.Parameters.AddWithValue("@date", GameReleaseDate);
                 command.Parameters.AddWithValue("@stock", GameStock);
                 command.Parameters.AddWithValue("@rating", GameRating);
                 command.Parameters.AddWithValue("@platform", GamePlatform);
+                command.Parameters.AddWithValue("@price", GameRentPrice);
                 command.Connection = connect;
                 command.ExecuteNonQuery();
             }
@@ -103,6 +105,7 @@ namespace Programming_Project_V5
                     txtSelectedGameStock.Text = dr["GameStock"].ToString();
                     txtSelectedGameRating.Text = dr["GameRating"].ToString();
                     txtSelectedGamePlatform.Text = dr["GamePlatform"].ToString();
+                    txtSelectedGameRentPrice.Text = dr["GameRentPrice"].ToString();
 
                     
                 }

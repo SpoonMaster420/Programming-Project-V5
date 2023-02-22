@@ -46,6 +46,9 @@
             this.txtSelectedGameStock = new System.Windows.Forms.TextBox();
             this.txtSelectedGameRating = new System.Windows.Forms.TextBox();
             this.txtSelectedGamePlatform = new System.Windows.Forms.TextBox();
+            this.txtGameRentPrice = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtSelectedGameRentPrice = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblGameName
@@ -130,7 +133,7 @@
             // 
             // btnSaveGameDetails
             // 
-            this.btnSaveGameDetails.Location = new System.Drawing.Point(601, 181);
+            this.btnSaveGameDetails.Location = new System.Drawing.Point(601, 210);
             this.btnSaveGameDetails.Name = "btnSaveGameDetails";
             this.btnSaveGameDetails.Size = new System.Drawing.Size(187, 42);
             this.btnSaveGameDetails.TabIndex = 10;
@@ -143,7 +146,7 @@
             this.CmBxGameID.FormattingEnabled = true;
             this.CmBxGameID.Location = new System.Drawing.Point(34, 32);
             this.CmBxGameID.Name = "CmBxGameID";
-            this.CmBxGameID.Size = new System.Drawing.Size(188, 23);
+            this.CmBxGameID.Size = new System.Drawing.Size(236, 23);
             this.CmBxGameID.TabIndex = 11;
             this.CmBxGameID.SelectedIndexChanged += new System.EventHandler(this.CmBxGameID_SelectedIndexChanged);
             // 
@@ -151,48 +154,74 @@
             // 
             this.txtSelectedGameID.Location = new System.Drawing.Point(34, 61);
             this.txtSelectedGameID.Name = "txtSelectedGameID";
-            this.txtSelectedGameID.Size = new System.Drawing.Size(188, 23);
+            this.txtSelectedGameID.Size = new System.Drawing.Size(236, 23);
             this.txtSelectedGameID.TabIndex = 12;
             // 
             // txtSelectedGameName
             // 
             this.txtSelectedGameName.Location = new System.Drawing.Point(34, 90);
             this.txtSelectedGameName.Name = "txtSelectedGameName";
-            this.txtSelectedGameName.Size = new System.Drawing.Size(188, 23);
+            this.txtSelectedGameName.Size = new System.Drawing.Size(236, 23);
             this.txtSelectedGameName.TabIndex = 13;
             // 
             // txtSelectedGameReleaseDate
             // 
             this.txtSelectedGameReleaseDate.Location = new System.Drawing.Point(34, 119);
             this.txtSelectedGameReleaseDate.Name = "txtSelectedGameReleaseDate";
-            this.txtSelectedGameReleaseDate.Size = new System.Drawing.Size(188, 23);
+            this.txtSelectedGameReleaseDate.Size = new System.Drawing.Size(236, 23);
             this.txtSelectedGameReleaseDate.TabIndex = 14;
             // 
             // txtSelectedGameStock
             // 
             this.txtSelectedGameStock.Location = new System.Drawing.Point(34, 148);
             this.txtSelectedGameStock.Name = "txtSelectedGameStock";
-            this.txtSelectedGameStock.Size = new System.Drawing.Size(188, 23);
+            this.txtSelectedGameStock.Size = new System.Drawing.Size(236, 23);
             this.txtSelectedGameStock.TabIndex = 15;
             // 
             // txtSelectedGameRating
             // 
             this.txtSelectedGameRating.Location = new System.Drawing.Point(34, 177);
             this.txtSelectedGameRating.Name = "txtSelectedGameRating";
-            this.txtSelectedGameRating.Size = new System.Drawing.Size(188, 23);
+            this.txtSelectedGameRating.Size = new System.Drawing.Size(236, 23);
             this.txtSelectedGameRating.TabIndex = 16;
             // 
             // txtSelectedGamePlatform
             // 
             this.txtSelectedGamePlatform.Location = new System.Drawing.Point(34, 206);
             this.txtSelectedGamePlatform.Name = "txtSelectedGamePlatform";
-            this.txtSelectedGamePlatform.Size = new System.Drawing.Size(188, 23);
+            this.txtSelectedGamePlatform.Size = new System.Drawing.Size(236, 23);
             this.txtSelectedGamePlatform.TabIndex = 17;
+            // 
+            // txtGameRentPrice
+            // 
+            this.txtGameRentPrice.Location = new System.Drawing.Point(601, 181);
+            this.txtGameRentPrice.Name = "txtGameRentPrice";
+            this.txtGameRentPrice.Size = new System.Drawing.Size(187, 23);
+            this.txtGameRentPrice.TabIndex = 18;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(501, 185);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 15);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Game Rent Price";
+            // 
+            // txtSelectedGameRentPrice
+            // 
+            this.txtSelectedGameRentPrice.Location = new System.Drawing.Point(34, 235);
+            this.txtSelectedGameRentPrice.Name = "txtSelectedGameRentPrice";
+            this.txtSelectedGameRentPrice.Size = new System.Drawing.Size(236, 23);
+            this.txtSelectedGameRentPrice.TabIndex = 20;
             // 
             // Games
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtSelectedGameRentPrice);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtGameRentPrice);
             this.Controls.Add(this.txtSelectedGamePlatform);
             this.Controls.Add(this.txtSelectedGameRating);
             this.Controls.Add(this.txtSelectedGameStock);
@@ -238,5 +267,8 @@
         private TextBox txtSelectedGameStock;
         private TextBox txtSelectedGameRating;
         private TextBox txtSelectedGamePlatform;
+        private TextBox txtGameRentPrice;
+        private Label label1;
+        private TextBox txtSelectedGameRentPrice;
     }
 }
