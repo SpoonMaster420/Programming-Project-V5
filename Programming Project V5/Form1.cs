@@ -34,7 +34,7 @@ namespace Programming_Project_V5
 
             string query = "SELECT COUNT(*) FROM EmpTable WHERE EmpName = '" + firstname + "' AND ID = '" + id + "'";
 
-            using(connect)
+            using (OleDbConnection connect = new OleDbConnection(Connect))
             { 
                 OleDbCommand command = new OleDbCommand(query, connect);
                 connect.Open();
@@ -43,7 +43,8 @@ namespace Programming_Project_V5
                 if(count == 1)
                 {
                     MessageBox.Show("Login Successful!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    UserSession.CurrentUser = txtEmpID.Text;
+                    UserSession.EmployeeName = txtEmpFirst.Text;
+                    UserSession.EmployeeID = txtEmpID.Text;
                     this.Hide();
                     Main_Form main = new Main_Form();
                     main.Show();   

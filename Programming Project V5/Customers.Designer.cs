@@ -43,6 +43,8 @@
             this.txtSelectedLast = new System.Windows.Forms.TextBox();
             this.txtSelectedEmail = new System.Windows.Forms.TextBox();
             this.txtSelectedPhone = new System.Windows.Forms.TextBox();
+            this.lblExistCust = new System.Windows.Forms.Label();
+            this.lblNewCustomer = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtCustFirst
@@ -115,7 +117,7 @@
             // 
             // btnSaveDetails
             // 
-            this.btnSaveDetails.Location = new System.Drawing.Point(679, 258);
+            this.btnSaveDetails.Location = new System.Drawing.Point(679, 244);
             this.btnSaveDetails.Name = "btnSaveDetails";
             this.btnSaveDetails.Size = new System.Drawing.Size(109, 23);
             this.btnSaveDetails.TabIndex = 8;
@@ -137,6 +139,7 @@
             this.txtSelectedID.Location = new System.Drawing.Point(45, 71);
             this.txtSelectedID.Multiline = true;
             this.txtSelectedID.Name = "txtSelectedID";
+            this.txtSelectedID.ReadOnly = true;
             this.txtSelectedID.Size = new System.Drawing.Size(208, 41);
             this.txtSelectedID.TabIndex = 10;
             // 
@@ -145,6 +148,7 @@
             this.txtSelectedFirst.Location = new System.Drawing.Point(45, 118);
             this.txtSelectedFirst.Multiline = true;
             this.txtSelectedFirst.Name = "txtSelectedFirst";
+            this.txtSelectedFirst.ReadOnly = true;
             this.txtSelectedFirst.Size = new System.Drawing.Size(208, 41);
             this.txtSelectedFirst.TabIndex = 11;
             // 
@@ -153,6 +157,7 @@
             this.txtSelectedLast.Location = new System.Drawing.Point(45, 165);
             this.txtSelectedLast.Multiline = true;
             this.txtSelectedLast.Name = "txtSelectedLast";
+            this.txtSelectedLast.ReadOnly = true;
             this.txtSelectedLast.Size = new System.Drawing.Size(208, 41);
             this.txtSelectedLast.TabIndex = 12;
             // 
@@ -161,6 +166,7 @@
             this.txtSelectedEmail.Location = new System.Drawing.Point(45, 212);
             this.txtSelectedEmail.Multiline = true;
             this.txtSelectedEmail.Name = "txtSelectedEmail";
+            this.txtSelectedEmail.ReadOnly = true;
             this.txtSelectedEmail.Size = new System.Drawing.Size(208, 41);
             this.txtSelectedEmail.TabIndex = 13;
             // 
@@ -169,13 +175,34 @@
             this.txtSelectedPhone.Location = new System.Drawing.Point(45, 259);
             this.txtSelectedPhone.Multiline = true;
             this.txtSelectedPhone.Name = "txtSelectedPhone";
+            this.txtSelectedPhone.ReadOnly = true;
             this.txtSelectedPhone.Size = new System.Drawing.Size(208, 41);
             this.txtSelectedPhone.TabIndex = 14;
+            // 
+            // lblExistCust
+            // 
+            this.lblExistCust.AutoSize = true;
+            this.lblExistCust.Location = new System.Drawing.Point(76, 23);
+            this.lblExistCust.Name = "lblExistCust";
+            this.lblExistCust.Size = new System.Drawing.Size(145, 15);
+            this.lblExistCust.TabIndex = 15;
+            this.lblExistCust.Text = "Find an Existing Customer";
+            // 
+            // lblNewCustomer
+            // 
+            this.lblNewCustomer.AutoSize = true;
+            this.lblNewCustomer.Location = new System.Drawing.Point(580, 38);
+            this.lblNewCustomer.Name = "lblNewCustomer";
+            this.lblNewCustomer.Size = new System.Drawing.Size(195, 15);
+            this.lblNewCustomer.TabIndex = 16;
+            this.lblNewCustomer.Text = "Add a new cutomer to the database";
             // 
             // Customers
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblNewCustomer);
+            this.Controls.Add(this.lblExistCust);
             this.Controls.Add(this.txtSelectedPhone);
             this.Controls.Add(this.txtSelectedEmail);
             this.Controls.Add(this.txtSelectedLast);
@@ -216,5 +243,7 @@
         private TextBox txtSelectedLast;
         private TextBox txtSelectedEmail;
         private TextBox txtSelectedPhone;
+        private Label lblExistCust;
+        private Label lblNewCustomer;
     }
 }

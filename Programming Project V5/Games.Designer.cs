@@ -49,12 +49,14 @@
             this.txtGameRentPrice = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSelectedGameRentPrice = new System.Windows.Forms.TextBox();
+            this.lblExistGame = new System.Windows.Forms.Label();
+            this.lblNewGame = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblGameName
             // 
             this.lblGameName.AutoSize = true;
-            this.lblGameName.Location = new System.Drawing.Point(522, 40);
+            this.lblGameName.Location = new System.Drawing.Point(501, 65);
             this.lblGameName.Name = "lblGameName";
             this.lblGameName.Size = new System.Drawing.Size(73, 15);
             this.lblGameName.TabIndex = 0;
@@ -63,7 +65,7 @@
             // lblGameReleaseDate
             // 
             this.lblGameReleaseDate.AutoSize = true;
-            this.lblGameReleaseDate.Location = new System.Drawing.Point(488, 69);
+            this.lblGameReleaseDate.Location = new System.Drawing.Point(467, 94);
             this.lblGameReleaseDate.Name = "lblGameReleaseDate";
             this.lblGameReleaseDate.Size = new System.Drawing.Size(107, 15);
             this.lblGameReleaseDate.TabIndex = 1;
@@ -72,7 +74,7 @@
             // lblGameStock
             // 
             this.lblGameStock.AutoSize = true;
-            this.lblGameStock.Location = new System.Drawing.Point(525, 97);
+            this.lblGameStock.Location = new System.Drawing.Point(504, 122);
             this.lblGameStock.Name = "lblGameStock";
             this.lblGameStock.Size = new System.Drawing.Size(70, 15);
             this.lblGameStock.TabIndex = 2;
@@ -81,7 +83,7 @@
             // lblGameRating
             // 
             this.lblGameRating.AutoSize = true;
-            this.lblGameRating.Location = new System.Drawing.Point(520, 126);
+            this.lblGameRating.Location = new System.Drawing.Point(499, 151);
             this.lblGameRating.Name = "lblGameRating";
             this.lblGameRating.Size = new System.Drawing.Size(75, 15);
             this.lblGameRating.TabIndex = 3;
@@ -90,7 +92,7 @@
             // lblGamePlatform
             // 
             this.lblGamePlatform.AutoSize = true;
-            this.lblGamePlatform.Location = new System.Drawing.Point(508, 155);
+            this.lblGamePlatform.Location = new System.Drawing.Point(487, 180);
             this.lblGamePlatform.Name = "lblGamePlatform";
             this.lblGamePlatform.Size = new System.Drawing.Size(87, 15);
             this.lblGamePlatform.TabIndex = 4;
@@ -98,44 +100,44 @@
             // 
             // txtGameName
             // 
-            this.txtGameName.Location = new System.Drawing.Point(601, 32);
+            this.txtGameName.Location = new System.Drawing.Point(580, 62);
             this.txtGameName.Name = "txtGameName";
-            this.txtGameName.Size = new System.Drawing.Size(187, 23);
+            this.txtGameName.Size = new System.Drawing.Size(208, 23);
             this.txtGameName.TabIndex = 5;
             // 
             // txtGameReleaseDate
             // 
-            this.txtGameReleaseDate.Location = new System.Drawing.Point(601, 61);
+            this.txtGameReleaseDate.Location = new System.Drawing.Point(580, 90);
             this.txtGameReleaseDate.Name = "txtGameReleaseDate";
-            this.txtGameReleaseDate.Size = new System.Drawing.Size(187, 23);
+            this.txtGameReleaseDate.Size = new System.Drawing.Size(208, 23);
             this.txtGameReleaseDate.TabIndex = 6;
             // 
             // txtGameStock
             // 
-            this.txtGameStock.Location = new System.Drawing.Point(601, 94);
+            this.txtGameStock.Location = new System.Drawing.Point(580, 119);
             this.txtGameStock.Name = "txtGameStock";
-            this.txtGameStock.Size = new System.Drawing.Size(187, 23);
+            this.txtGameStock.Size = new System.Drawing.Size(208, 23);
             this.txtGameStock.TabIndex = 7;
             // 
             // txtGameRating
             // 
-            this.txtGameRating.Location = new System.Drawing.Point(601, 123);
+            this.txtGameRating.Location = new System.Drawing.Point(580, 148);
             this.txtGameRating.Name = "txtGameRating";
-            this.txtGameRating.Size = new System.Drawing.Size(187, 23);
+            this.txtGameRating.Size = new System.Drawing.Size(208, 23);
             this.txtGameRating.TabIndex = 8;
             // 
             // txtGamePlatform
             // 
-            this.txtGamePlatform.Location = new System.Drawing.Point(601, 152);
+            this.txtGamePlatform.Location = new System.Drawing.Point(580, 177);
             this.txtGamePlatform.Name = "txtGamePlatform";
-            this.txtGamePlatform.Size = new System.Drawing.Size(187, 23);
+            this.txtGamePlatform.Size = new System.Drawing.Size(208, 23);
             this.txtGamePlatform.TabIndex = 9;
             // 
             // btnSaveGameDetails
             // 
-            this.btnSaveGameDetails.Location = new System.Drawing.Point(601, 210);
+            this.btnSaveGameDetails.Location = new System.Drawing.Point(580, 235);
             this.btnSaveGameDetails.Name = "btnSaveGameDetails";
-            this.btnSaveGameDetails.Size = new System.Drawing.Size(187, 42);
+            this.btnSaveGameDetails.Size = new System.Drawing.Size(208, 42);
             this.btnSaveGameDetails.TabIndex = 10;
             this.btnSaveGameDetails.Text = "Save Game Details";
             this.btnSaveGameDetails.UseVisualStyleBackColor = true;
@@ -144,7 +146,7 @@
             // CmBxGameID
             // 
             this.CmBxGameID.FormattingEnabled = true;
-            this.CmBxGameID.Location = new System.Drawing.Point(34, 32);
+            this.CmBxGameID.Location = new System.Drawing.Point(33, 61);
             this.CmBxGameID.Name = "CmBxGameID";
             this.CmBxGameID.Size = new System.Drawing.Size(236, 23);
             this.CmBxGameID.TabIndex = 11;
@@ -152,57 +154,63 @@
             // 
             // txtSelectedGameID
             // 
-            this.txtSelectedGameID.Location = new System.Drawing.Point(34, 61);
+            this.txtSelectedGameID.Location = new System.Drawing.Point(33, 90);
             this.txtSelectedGameID.Name = "txtSelectedGameID";
+            this.txtSelectedGameID.ReadOnly = true;
             this.txtSelectedGameID.Size = new System.Drawing.Size(236, 23);
             this.txtSelectedGameID.TabIndex = 12;
             // 
             // txtSelectedGameName
             // 
-            this.txtSelectedGameName.Location = new System.Drawing.Point(34, 90);
+            this.txtSelectedGameName.Location = new System.Drawing.Point(33, 119);
             this.txtSelectedGameName.Name = "txtSelectedGameName";
+            this.txtSelectedGameName.ReadOnly = true;
             this.txtSelectedGameName.Size = new System.Drawing.Size(236, 23);
             this.txtSelectedGameName.TabIndex = 13;
             // 
             // txtSelectedGameReleaseDate
             // 
-            this.txtSelectedGameReleaseDate.Location = new System.Drawing.Point(34, 119);
+            this.txtSelectedGameReleaseDate.Location = new System.Drawing.Point(33, 148);
             this.txtSelectedGameReleaseDate.Name = "txtSelectedGameReleaseDate";
+            this.txtSelectedGameReleaseDate.ReadOnly = true;
             this.txtSelectedGameReleaseDate.Size = new System.Drawing.Size(236, 23);
             this.txtSelectedGameReleaseDate.TabIndex = 14;
             // 
             // txtSelectedGameStock
             // 
-            this.txtSelectedGameStock.Location = new System.Drawing.Point(34, 148);
+            this.txtSelectedGameStock.Location = new System.Drawing.Point(33, 177);
             this.txtSelectedGameStock.Name = "txtSelectedGameStock";
+            this.txtSelectedGameStock.ReadOnly = true;
             this.txtSelectedGameStock.Size = new System.Drawing.Size(236, 23);
             this.txtSelectedGameStock.TabIndex = 15;
             // 
             // txtSelectedGameRating
             // 
-            this.txtSelectedGameRating.Location = new System.Drawing.Point(34, 177);
+            this.txtSelectedGameRating.Location = new System.Drawing.Point(33, 206);
             this.txtSelectedGameRating.Name = "txtSelectedGameRating";
+            this.txtSelectedGameRating.ReadOnly = true;
             this.txtSelectedGameRating.Size = new System.Drawing.Size(236, 23);
             this.txtSelectedGameRating.TabIndex = 16;
             // 
             // txtSelectedGamePlatform
             // 
-            this.txtSelectedGamePlatform.Location = new System.Drawing.Point(34, 206);
+            this.txtSelectedGamePlatform.Location = new System.Drawing.Point(33, 235);
             this.txtSelectedGamePlatform.Name = "txtSelectedGamePlatform";
+            this.txtSelectedGamePlatform.ReadOnly = true;
             this.txtSelectedGamePlatform.Size = new System.Drawing.Size(236, 23);
             this.txtSelectedGamePlatform.TabIndex = 17;
             // 
             // txtGameRentPrice
             // 
-            this.txtGameRentPrice.Location = new System.Drawing.Point(601, 181);
+            this.txtGameRentPrice.Location = new System.Drawing.Point(580, 206);
             this.txtGameRentPrice.Name = "txtGameRentPrice";
-            this.txtGameRentPrice.Size = new System.Drawing.Size(187, 23);
+            this.txtGameRentPrice.Size = new System.Drawing.Size(208, 23);
             this.txtGameRentPrice.TabIndex = 18;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(501, 185);
+            this.label1.Location = new System.Drawing.Point(480, 210);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(94, 15);
             this.label1.TabIndex = 19;
@@ -210,15 +218,36 @@
             // 
             // txtSelectedGameRentPrice
             // 
-            this.txtSelectedGameRentPrice.Location = new System.Drawing.Point(34, 235);
+            this.txtSelectedGameRentPrice.Location = new System.Drawing.Point(33, 264);
             this.txtSelectedGameRentPrice.Name = "txtSelectedGameRentPrice";
+            this.txtSelectedGameRentPrice.ReadOnly = true;
             this.txtSelectedGameRentPrice.Size = new System.Drawing.Size(236, 23);
             this.txtSelectedGameRentPrice.TabIndex = 20;
+            // 
+            // lblExistGame
+            // 
+            this.lblExistGame.AutoSize = true;
+            this.lblExistGame.Location = new System.Drawing.Point(96, 43);
+            this.lblExistGame.Name = "lblExistGame";
+            this.lblExistGame.Size = new System.Drawing.Size(124, 15);
+            this.lblExistGame.TabIndex = 21;
+            this.lblExistGame.Text = "Find an Existing Game";
+            // 
+            // lblNewGame
+            // 
+            this.lblNewGame.AutoSize = true;
+            this.lblNewGame.Location = new System.Drawing.Point(599, 43);
+            this.lblNewGame.Name = "lblNewGame";
+            this.lblNewGame.Size = new System.Drawing.Size(180, 15);
+            this.lblNewGame.TabIndex = 22;
+            this.lblNewGame.Text = "Add a new game to the database";
             // 
             // Games
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblNewGame);
+            this.Controls.Add(this.lblExistGame);
             this.Controls.Add(this.txtSelectedGameRentPrice);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtGameRentPrice);
@@ -270,5 +299,7 @@
         private TextBox txtGameRentPrice;
         private Label label1;
         private TextBox txtSelectedGameRentPrice;
+        private Label lblExistGame;
+        private Label lblNewGame;
     }
 }

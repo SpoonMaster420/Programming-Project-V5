@@ -42,36 +42,59 @@ namespace Programming_Project_V5
         {
             LoadGames();
             LoadCustomers();
+            LoadOngoingRentals();
+            
         }
 
+        private void LoadOngoingRentals()
+        {
+            OleDbConnection connect = new OleDbConnection(CStr);
+
+            OleDbDataAdapter adapter = new OleDbDataAdapter("SELECT * FROM RentalTable", connect);
+            DataTable datagridtable = new DataTable();
+            adapter.Fill(datagridtable);
+
+            dgvOngoingRentals.DataSource = datagridtable;
+        }
         private void LoadGames()
         {
             using(OleDbConnection connect = new OleDbConnection(CStr))
             {
                 connect.Open();
 
-                OleDbCommand cmd = new OleDbCommand("SELECT ID, GameName FROM GameTable", connect);
+                OleDbCommand cmd = new OleDbCommand("SELECT * FROM GameTable", connect);
                 OleDbDataReader dr = cmd.ExecuteReader();
+                lbAvailableGames.Items.Clear();
+                
 
                 while (dr.Read())
                 {
                     int id = Convert.ToInt32(dr["ID"]);
                     string name = dr["GameName"].ToString();
-                    Game game = new Game(id, name);
-                    availableGames.Add(game);
+                    int stock = (int)dr["GameStock"];
+                    decimal GameRentPrice = (decimal)dr["GameRentPrice"];
+                    
+                    if(stock > 0)
+                    {
+                        availableGames.Add(new Game(id, name, GameRentPrice, stock));
+                        lbAvailableGames.Items.Add(name);
+                    }
                 }
             }
 
-            foreach(Game game in availableGames)
-            {
-                lbAvailableGames.Items.Add(game.id.ToString() + "\t" + game.name + "\n");
-            }
+         
 
 
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if(lbAvailableGames.Items.Count == 0)
+            {
+                MessageBox.Show("There are no available games to add.");
+                return;
+            }
+
             int selectedIndex = lbAvailableGames.SelectedIndex;
             if(selectedIndex == -1)
             {
@@ -160,6 +183,14 @@ namespace Programming_Project_V5
         {
             SaveRental();
             MessageBox.Show("Renal Successfully saved!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+            lbRentalSummary.Items.Clear();
+            txtCustomerID.Clear();
+            txtCustomerName.Clear();
+            txtTotalPrice.Clear();
+
+            LoadOngoingRentals();
         
         }
 
@@ -218,6 +249,10 @@ namespace Programming_Project_V5
                     OleDbCommand cmd = new OleDbCommand("SELECT GameRentPrice FROM GameTable WHERE ID=@ID", connect);
                     cmd.Parameters.AddWithValue("@ID", game.id);
                     dbTotalPrice += Convert.ToDecimal(cmd.ExecuteScalar());
+
+                    OleDbCommand UpdateStock = new OleDbCommand("UPDATE GameTable SET GameStock = GameStock - 1 WHERE ID=@id", connect);
+                    UpdateStock.Parameters.AddWithValue("@id", game.id);
+                    UpdateStock.ExecuteNonQuery();
                 }
 
                 Random random = new Random();

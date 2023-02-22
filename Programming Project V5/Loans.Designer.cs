@@ -49,15 +49,19 @@
             this.btnSaveRental = new System.Windows.Forms.Button();
             this.txtTotalPrice = new System.Windows.Forms.TextBox();
             this.lbRentalSummary = new System.Windows.Forms.ListBox();
+            this.tabOngoingRentals = new System.Windows.Forms.TabPage();
+            this.dgvOngoingRentals = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabSelectGames.SuspendLayout();
             this.tabSelectCustomer.SuspendLayout();
             this.tabRentalSummary.SuspendLayout();
+            this.tabOngoingRentals.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOngoingRentals)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBackPg1
             // 
-            this.btnBackPg1.Location = new System.Drawing.Point(6, 408);
+            this.btnBackPg1.Location = new System.Drawing.Point(8, 511);
             this.btnBackPg1.Name = "btnBackPg1";
             this.btnBackPg1.Size = new System.Drawing.Size(75, 35);
             this.btnBackPg1.TabIndex = 3;
@@ -77,7 +81,7 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(411, 275);
+            this.btnRemove.Location = new System.Drawing.Point(506, 275);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 35);
             this.btnRemove.TabIndex = 5;
@@ -91,16 +95,16 @@
             this.lbAvailableGames.ItemHeight = 15;
             this.lbAvailableGames.Location = new System.Drawing.Point(6, 6);
             this.lbAvailableGames.Name = "lbAvailableGames";
-            this.lbAvailableGames.Size = new System.Drawing.Size(252, 304);
+            this.lbAvailableGames.Size = new System.Drawing.Size(318, 304);
             this.lbAvailableGames.TabIndex = 7;
             // 
             // lbRentedGames
             // 
             this.lbRentedGames.FormattingEnabled = true;
             this.lbRentedGames.ItemHeight = 15;
-            this.lbRentedGames.Location = new System.Drawing.Point(544, 6);
+            this.lbRentedGames.Location = new System.Drawing.Point(587, 6);
             this.lbRentedGames.Name = "lbRentedGames";
-            this.lbRentedGames.Size = new System.Drawing.Size(252, 304);
+            this.lbRentedGames.Size = new System.Drawing.Size(330, 304);
             this.lbRentedGames.TabIndex = 8;
             // 
             // tabControl1
@@ -108,10 +112,12 @@
             this.tabControl1.Controls.Add(this.tabSelectGames);
             this.tabControl1.Controls.Add(this.tabSelectCustomer);
             this.tabControl1.Controls.Add(this.tabRentalSummary);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Controls.Add(this.tabOngoingRentals);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(810, 477);
+            this.tabControl1.Size = new System.Drawing.Size(933, 582);
             this.tabControl1.TabIndex = 9;
             // 
             // tabSelectGames
@@ -125,14 +131,14 @@
             this.tabSelectGames.Location = new System.Drawing.Point(4, 24);
             this.tabSelectGames.Name = "tabSelectGames";
             this.tabSelectGames.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSelectGames.Size = new System.Drawing.Size(802, 449);
+            this.tabSelectGames.Size = new System.Drawing.Size(925, 554);
             this.tabSelectGames.TabIndex = 0;
             this.tabSelectGames.Text = "Select Games";
             this.tabSelectGames.UseVisualStyleBackColor = true;
             // 
             // btnNextPg1
             // 
-            this.btnNextPg1.Location = new System.Drawing.Point(721, 408);
+            this.btnNextPg1.Location = new System.Drawing.Point(847, 511);
             this.btnNextPg1.Name = "btnNextPg1";
             this.btnNextPg1.Size = new System.Drawing.Size(75, 35);
             this.btnNextPg1.TabIndex = 9;
@@ -148,14 +154,14 @@
             this.tabSelectCustomer.Location = new System.Drawing.Point(4, 24);
             this.tabSelectCustomer.Name = "tabSelectCustomer";
             this.tabSelectCustomer.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSelectCustomer.Size = new System.Drawing.Size(802, 449);
+            this.tabSelectCustomer.Size = new System.Drawing.Size(925, 554);
             this.tabSelectCustomer.TabIndex = 1;
             this.tabSelectCustomer.Text = "Select Customer";
             this.tabSelectCustomer.UseVisualStyleBackColor = true;
             // 
             // btnNextPg2
             // 
-            this.btnNextPg2.Location = new System.Drawing.Point(721, 408);
+            this.btnNextPg2.Location = new System.Drawing.Point(844, 511);
             this.btnNextPg2.Name = "btnNextPg2";
             this.btnNextPg2.Size = new System.Drawing.Size(75, 35);
             this.btnNextPg2.TabIndex = 7;
@@ -165,7 +171,7 @@
             // 
             // btnBackPg2
             // 
-            this.btnBackPg2.Location = new System.Drawing.Point(6, 408);
+            this.btnBackPg2.Location = new System.Drawing.Point(8, 511);
             this.btnBackPg2.Name = "btnBackPg2";
             this.btnBackPg2.Size = new System.Drawing.Size(75, 35);
             this.btnBackPg2.TabIndex = 6;
@@ -177,9 +183,9 @@
             // 
             this.lbCustomers.FormattingEnabled = true;
             this.lbCustomers.ItemHeight = 15;
-            this.lbCustomers.Location = new System.Drawing.Point(129, 6);
+            this.lbCustomers.Location = new System.Drawing.Point(92, 6);
             this.lbCustomers.Name = "lbCustomers";
-            this.lbCustomers.Size = new System.Drawing.Size(574, 394);
+            this.lbCustomers.Size = new System.Drawing.Size(748, 499);
             this.lbCustomers.TabIndex = 0;
             this.lbCustomers.SelectedIndexChanged += new System.EventHandler(this.lbCustomers_SelectedIndexChanged);
             // 
@@ -196,21 +202,21 @@
             this.tabRentalSummary.Location = new System.Drawing.Point(4, 24);
             this.tabRentalSummary.Name = "tabRentalSummary";
             this.tabRentalSummary.Padding = new System.Windows.Forms.Padding(3);
-            this.tabRentalSummary.Size = new System.Drawing.Size(802, 449);
+            this.tabRentalSummary.Size = new System.Drawing.Size(925, 554);
             this.tabRentalSummary.TabIndex = 2;
             this.tabRentalSummary.Text = "Rental Summary";
             this.tabRentalSummary.UseVisualStyleBackColor = true;
             // 
             // txtCustomerID
             // 
-            this.txtCustomerID.Location = new System.Drawing.Point(578, 91);
+            this.txtCustomerID.Location = new System.Drawing.Point(747, 98);
             this.txtCustomerID.Name = "txtCustomerID";
             this.txtCustomerID.Size = new System.Drawing.Size(172, 23);
             this.txtCustomerID.TabIndex = 10;
             // 
             // txtCustomerName
             // 
-            this.txtCustomerName.Location = new System.Drawing.Point(578, 37);
+            this.txtCustomerName.Location = new System.Drawing.Point(747, 44);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(172, 23);
             this.txtCustomerName.TabIndex = 9;
@@ -218,7 +224,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(578, 73);
+            this.label2.Location = new System.Drawing.Point(747, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 15);
             this.label2.TabIndex = 8;
@@ -227,7 +233,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(578, 19);
+            this.label1.Location = new System.Drawing.Point(747, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(94, 15);
             this.label1.TabIndex = 7;
@@ -235,7 +241,7 @@
             // 
             // btnBackPg3
             // 
-            this.btnBackPg3.Location = new System.Drawing.Point(6, 408);
+            this.btnBackPg3.Location = new System.Drawing.Point(8, 511);
             this.btnBackPg3.Name = "btnBackPg3";
             this.btnBackPg3.Size = new System.Drawing.Size(75, 35);
             this.btnBackPg3.TabIndex = 6;
@@ -245,7 +251,7 @@
             // 
             // btnSaveRental
             // 
-            this.btnSaveRental.Location = new System.Drawing.Point(613, 420);
+            this.btnSaveRental.Location = new System.Drawing.Point(734, 521);
             this.btnSaveRental.Name = "btnSaveRental";
             this.btnSaveRental.Size = new System.Drawing.Size(183, 23);
             this.btnSaveRental.TabIndex = 2;
@@ -255,7 +261,7 @@
             // 
             // txtTotalPrice
             // 
-            this.txtTotalPrice.Location = new System.Drawing.Point(613, 391);
+            this.txtTotalPrice.Location = new System.Drawing.Point(734, 492);
             this.txtTotalPrice.Name = "txtTotalPrice";
             this.txtTotalPrice.Size = new System.Drawing.Size(183, 23);
             this.txtTotalPrice.TabIndex = 1;
@@ -264,15 +270,37 @@
             // 
             this.lbRentalSummary.FormattingEnabled = true;
             this.lbRentalSummary.ItemHeight = 15;
-            this.lbRentalSummary.Location = new System.Drawing.Point(6, 6);
+            this.lbRentalSummary.Location = new System.Drawing.Point(8, 5);
             this.lbRentalSummary.Name = "lbRentalSummary";
             this.lbRentalSummary.Size = new System.Drawing.Size(566, 364);
             this.lbRentalSummary.TabIndex = 0;
             // 
+            // tabOngoingRentals
+            // 
+            this.tabOngoingRentals.Controls.Add(this.dgvOngoingRentals);
+            this.tabOngoingRentals.Location = new System.Drawing.Point(4, 24);
+            this.tabOngoingRentals.Name = "tabOngoingRentals";
+            this.tabOngoingRentals.Padding = new System.Windows.Forms.Padding(3);
+            this.tabOngoingRentals.Size = new System.Drawing.Size(925, 554);
+            this.tabOngoingRentals.TabIndex = 3;
+            this.tabOngoingRentals.Text = "Ongoing Rentals";
+            this.tabOngoingRentals.UseVisualStyleBackColor = true;
+            // 
+            // dgvOngoingRentals
+            // 
+            this.dgvOngoingRentals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOngoingRentals.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvOngoingRentals.Location = new System.Drawing.Point(3, 3);
+            this.dgvOngoingRentals.Name = "dgvOngoingRentals";
+            this.dgvOngoingRentals.ReadOnly = true;
+            this.dgvOngoingRentals.RowTemplate.Height = 25;
+            this.dgvOngoingRentals.Size = new System.Drawing.Size(919, 548);
+            this.dgvOngoingRentals.TabIndex = 0;
+            // 
             // Loans
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(834, 501);
+            this.ClientSize = new System.Drawing.Size(933, 582);
             this.Controls.Add(this.tabControl1);
             this.Name = "Loans";
             this.Text = "Loans";
@@ -282,6 +310,8 @@
             this.tabSelectCustomer.ResumeLayout(false);
             this.tabRentalSummary.ResumeLayout(false);
             this.tabRentalSummary.PerformLayout();
+            this.tabOngoingRentals.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOngoingRentals)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -308,5 +338,7 @@
         private Label label2;
         private Label label1;
         private Button btnBackPg3;
+        private TabPage tabOngoingRentals;
+        private DataGridView dgvOngoingRentals;
     }
 }
