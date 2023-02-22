@@ -156,7 +156,106 @@ namespace Programming_Project_V5
             selectedCustomer = (Customer)lbCustomers.SelectedItem;
         }
 
+        private void btnSaveRental_Click(object sender, EventArgs e)
+        {
+            SaveRental();
+            MessageBox.Show("Renal Successfully saved!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        
+        }
 
+
+        private void btnNextPg2_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabRentalSummary;
+
+            txtCustomerName.Text = selectedCustomer.FirstName + " " + selectedCustomer.LastName;
+            txtCustomerID.Text = selectedCustomer.ID.ToString();
+
+            if (selectedCustomer == null)
+            {
+                MessageBox.Show("Please select a customer.");
+                return;
+            }
+
+            if (rentedGames.Count == 0)
+            {
+                MessageBox.Show("Please select at least one game to rent.");
+                return;
+            }
+
+            decimal totalPrice = 0;
+
+            using (OleDbConnection connect = new OleDbConnection(CStr))
+            {
+                connect.Open();
+
+                foreach (Game game in rentedGames)
+                {
+                    OleDbCommand cmd = new OleDbCommand("SELECT GameRentPrice FROM GameTable WHERE ID=@ID", connect);
+                    cmd.Parameters.AddWithValue("@ID", game.id);
+                    OleDbDataReader dr = cmd.ExecuteReader();
+                    if (dr.Read())
+                    {
+                        decimal price = Convert.ToDecimal(dr["GameRentPrice"]);
+                        totalPrice += price;
+                    }
+                    lbRentalSummary.Items.Add(game.name);
+                }
+            }
+            txtTotalPrice.Text = "Total Price: £" + totalPrice.ToString() + ".00";
+        }
+
+        private void SaveRental()
+        {
+            using(OleDbConnection connect = new OleDbConnection(CStr))
+            {
+                connect.Open();
+                Customer customer = (Customer)lbCustomers.SelectedItem;
+
+                decimal dbTotalPrice = 0;
+                foreach(Game game in rentedGames)
+                {
+                    OleDbCommand cmd = new OleDbCommand("SELECT GameRentPrice FROM GameTable WHERE ID=@ID", connect);
+                    cmd.Parameters.AddWithValue("@ID", game.id);
+                    dbTotalPrice += Convert.ToDecimal(cmd.ExecuteScalar());
+                }
+
+                Random random = new Random();
+                int LoanID = random.Next(10000000, 99999999);
+
+                DateTime dateOut = DateTime.Now.Date;
+                DateTime dateDue = dateOut.AddDays(21).Date;
+
+                OleDbCommand command = new OleDbCommand("INSERT INTO RentalTable (ID, CustomerName, CustomerPhone, EmployeeID, TotalPrice, DateOut, DateDue) VALUES (@ID, @name, @phone, @empid, @price, @dateout, @datedue)", connect);
+                command.Parameters.AddWithValue("@ID", LoanID);
+                command.Parameters.AddWithValue("@name", txtCustomerName.Text);
+                command.Parameters.AddWithValue("@phone", customer.Phone);
+                command.Parameters.AddWithValue("@empid", UserSession.EmployeeID);
+                command.Parameters.AddWithValue("@price", dbTotalPrice);
+                command.Parameters.AddWithValue("@dateout", dateOut);
+                command.Parameters.AddWithValue("@datedue", dateDue);
+                command.ExecuteNonQuery();
+
+
+
+
+            }
+        }
+
+        private void btnNextPg1_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabSelectCustomer;
+        }
+
+        private void btnBackPg3_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabSelectCustomer;
+        }
+
+        private void btnBackPg2_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabSelectGames;
+        }
     }
 
     

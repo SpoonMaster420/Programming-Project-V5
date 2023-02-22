@@ -48,7 +48,7 @@ namespace Programming_Project_V5
 
         private void updateUserNameLabel()
         {
-            string name = UserSession.CurrentUser;
+            string name = UserSession.EmployeeName;
 
             lblUserLoggedIn.Text = "Logged in as: " + name;
         }

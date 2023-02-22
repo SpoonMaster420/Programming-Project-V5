@@ -43,7 +43,7 @@ namespace Programming_Project_V5
                 if(count == 1)
                 {
                     MessageBox.Show("Login Successful!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    UserSession.CurrentUser = txtEmpFirst.Text;
+                    UserSession.CurrentUser = txtEmpID.Text;
                     this.Hide();
                     Main_Form main = new Main_Form();
                     main.Show();   
