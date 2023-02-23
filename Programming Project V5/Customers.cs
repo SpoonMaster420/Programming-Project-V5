@@ -13,20 +13,20 @@ namespace Programming_Project_V5
 {
     public partial class Customers : Form
     {
-        string CStr = DBSettings.CString;
-        //OleDbConnection cn = DBSettings.connection;
-        private Settings settings;
+        string CStr = DBSettings.CString; //Connection String to the database
+        
+        private Settings settings; //Settings object to store user settings
         public Customers()
         {
             InitializeComponent();
 
-            //CmBxCustID.DataSource = null;
-
+            //Loads user settings for font, background and foreground color and applies to the whole form
             this.settings = SettingsManager.GetSettings();
             this.Font = this.settings.font;
             this.BackColor = this.settings.bcolor;
             this.ForeColor = this.settings.fcolor;
-
+            
+            //Loads the customer IDs from the database into the ComboBox
             using(OleDbConnection connect = new OleDbConnection(CStr))
             {
                 connect.Open();
@@ -43,14 +43,20 @@ namespace Programming_Project_V5
 
         private void btnSaveDetails_Click(object sender, EventArgs e)
         {
+
+            //Assigns the values from the textboxes to variables 
             string CustFirst = txtCustFirst.Text;
             string CustLast = txtCustLast.Text;
             string CustEmail = txtCustEmail.Text;
             string CustPhone = txtCustPhone.Text;
 
+
+            //Generates a random Customer ID
             Random random = new Random();
             int CustomerID = random.Next(10000, 99999);
 
+
+            //Inserts the customer details into the database
             using (OleDbConnection connect = new OleDbConnection(CStr))
             {
                 connect.Open();
@@ -64,13 +70,16 @@ namespace Programming_Project_V5
                 command.ExecuteNonQuery();
             }
 
-            MessageBox.Show("Customer Details saved to Database!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Customer Details saved to Database!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information); //Displays a success message to say the details have been saved
 
+            //Clears the text boxes
             txtCustFirst.Text = "";
             txtCustLast.Text = "";
             txtCustEmail.Text = "";
             txtCustPhone.Text = "";
 
+
+            //Refreshes the ComboBox to show any new customers added 
             using(OleDbConnection Refresh = new OleDbConnection(CStr))
             {
                 OleDbCommand refresh = new OleDbCommand("SELECT ID FROM CustTable", Refresh);
@@ -85,16 +94,17 @@ namespace Programming_Project_V5
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectedCustomerID = (string)CmBxCustID.SelectedValue;
+            string selectedCustomerID = (string)CmBxCustID.SelectedValue; //Get the selected Customer ID from the ComboBox 
             using(OleDbConnection connect = new OleDbConnection(CStr))
             {
                 connect.Open();
-                OleDbCommand command = new OleDbCommand("SELECT * FROM CustTable WHERE ID=@id", connect);
-                command.Parameters.AddWithValue("@id", selectedCustomerID);
+                OleDbCommand command = new OleDbCommand("SELECT * FROM CustTable WHERE ID=@id", connect); //Query the database with the selected Customer ID to get all the customer details
+                command.Parameters.AddWithValue("@id", selectedCustomerID); //Execute the query and reads the results 
                 
                 OleDbDataReader dr = command.ExecuteReader();
                 if (dr.Read())
                 {
+                    //Displays the customer details in the appropriate text boxes
                     txtSelectedID.Text = dr["ID"].ToString();
                     txtSelectedFirst.Text = dr["CustFirst"].ToString();
                     txtSelectedLast.Text = dr["CustLast"].ToString();
@@ -103,7 +113,7 @@ namespace Programming_Project_V5
                 }
                 else
                 {
-                    MessageBox.Show("Unable to retrieve customer details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Unable to retrieve customer details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); //Error message that will say that it can't retrieve the customer data
                 }
             }
         }
