@@ -14,25 +14,26 @@ namespace Programming_Project_V5
 {
     public partial class Loans : Form
     {
+        //Declare private variables to be used in the form
         private Customer selectedCustomer;
 
         private List<Game> availableGames;
         private List<Game> rentedGames;
 
-        string CStr = DBSettings.CString;
+        string CStr = DBSettings.CString; //Store the connection string in a private variable
 
-        private Settings settings;
+        private Settings settings;  //Declare a settings object to be used in the form
         public Loans()
         {
             InitializeComponent();
             
-            this.settings = SettingsManager.GetSettings();
-
+            this.settings = SettingsManager.GetSettings();  //Retrieves the settings from the settings manager
+            //Sets the form's font, background and foreground color to the user's choice 
             this.Font = this.settings.font;
             this.BackColor = this.settings.bcolor;
             this.ForeColor = this.settings.fcolor;
 
-
+            //Initialise the availableGames and rentedGames lists
             availableGames = new List<Game>();
             rentedGames = new List<Game>();
 
@@ -40,6 +41,7 @@ namespace Programming_Project_V5
 
         private void Loans_Load(object sender, EventArgs e)
         {
+            //Loads the Games, Customers and ongoing rentals when the form loads
             LoadGames();
             LoadCustomers();
             LoadOngoingRentals();
@@ -48,33 +50,35 @@ namespace Programming_Project_V5
 
         private void LoadOngoingRentals()
         {
-            OleDbConnection connect = new OleDbConnection(CStr);
+            OleDbConnection connect = new OleDbConnection(CStr); //Creates a new OleDbConnection using the connection string
 
-            OleDbDataAdapter adapter = new OleDbDataAdapter("SELECT * FROM RentalTable", connect);
-            DataTable datagridtable = new DataTable();
-            adapter.Fill(datagridtable);
+            OleDbDataAdapter adapter = new OleDbDataAdapter("SELECT * FROM RentalTable", connect); //Creates a DataAdapter to retrieve the data from the RentalTable
+            DataTable datagridtable = new DataTable();  //Creates a DataTable to store the data retrieved from the Query
+            adapter.Fill(datagridtable); //Fills the DataTable with the data from the rentalTable
 
-            dgvOngoingRentals.DataSource = datagridtable;
+            dgvOngoingRentals.DataSource = datagridtable; //Sets the source of the data grid view to the DataTable
         }
+        //Loads the games from the GameTable in the database and displays them in the list box
         private void LoadGames()
         {
-            using(OleDbConnection connect = new OleDbConnection(CStr))
+            using(OleDbConnection connect = new OleDbConnection(CStr)) //New OleDbConnection using the connection string
             {
-                connect.Open();
+                connect.Open(); //Opens the connection
 
-                OleDbCommand cmd = new OleDbCommand("SELECT * FROM GameTable", connect);
-                OleDbDataReader dr = cmd.ExecuteReader();
-                lbAvailableGames.Items.Clear();
+                OleDbCommand cmd = new OleDbCommand("SELECT * FROM GameTable", connect);  //Retrieves all the data from the GameTable
+                OleDbDataReader dr = cmd.ExecuteReader(); //Uses OleDbDataReader to read the data from the GameTable
+                lbAvailableGames.Items.Clear(); //Clears the items in the list box
                 
 
-                while (dr.Read())
+                while (dr.Read()) //Loops through each row in the GameTable
                 {
+                    //Retrieves the values for the Game's ID, name, stock level and rent price from the row
                     int id = Convert.ToInt32(dr["ID"]);
                     string name = dr["GameName"].ToString();
                     int stock = (int)dr["GameStock"];
                     decimal GameRentPrice = (decimal)dr["GameRentPrice"];
                     
-                    if(stock > 0)
+                    if(stock > 0) //If the game is in stock, add it to the available games list box
                     {
                         availableGames.Add(new Game(id, name, GameRentPrice, stock));
                         lbAvailableGames.Items.Add(name);
@@ -89,57 +93,60 @@ namespace Programming_Project_V5
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if(lbAvailableGames.Items.Count == 0)
+            if(lbAvailableGames.Items.Count == 0) //Check if there are any games that are available to rent 
             {
                 MessageBox.Show("There are no available games to add.");
                 return;
             }
 
-            int selectedIndex = lbAvailableGames.SelectedIndex;
-            if(selectedIndex == -1)
+            int selectedIndex = lbAvailableGames.SelectedIndex; //Get the index of the selected game in the list box
+            if(selectedIndex == -1) //If no game is selected, display an error message and return
             {
                 MessageBox.Show("Please select a game to add.");
                 return;
             }
 
-            Game selectedGame = availableGames[selectedIndex];
+            Game selectedGame = availableGames[selectedIndex]; //Get the selected game object from the available games list based on the index
 
+            //Remove the selected game from the available games list and move it to the rented games list
             availableGames.Remove(selectedGame);
             rentedGames.Add(selectedGame);
 
-            updateListBoxes();
+            updateListBoxes(); //Update the list boxes to show the changes
 
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            int selectedIndex = lbRentedGames.SelectedIndex;
-            if(selectedIndex == -1)
+            int selectedIndex = lbRentedGames.SelectedIndex; //Get the index of the selected game in the rented games list box and stores it
+            if(selectedIndex == -1) //If there is no game selected, display an error message and return
             {
                 MessageBox.Show("Please select a game to remove.");
                 return;
             }
 
-            Game selectedGame = rentedGames[selectedIndex];
+            Game selectedGame = rentedGames[selectedIndex]; //Get the selected game object from the rented games list based on the index
 
+            //Remove the selected game from the rented games list and add it to the available games list
             rentedGames.Remove(selectedGame);
             availableGames.Add(selectedGame);
 
-            updateListBoxes();
+            updateListBoxes(); //Update the list boxes to show the changes 
            
         }
 
         private void updateListBoxes()
         {
+            //Clear the items in both list boxes 
             lbAvailableGames.Items.Clear();
             lbRentedGames.Items.Clear();
 
-            foreach(Game game in availableGames)
+            foreach(Game game in availableGames) //Add each available game to the available games list box, displaying the game id and name
             {
                 lbAvailableGames.Items.Add(game.id.ToString() + "\t" + game.name + "\n");
             }
 
-            foreach(Game game in rentedGames)
+            foreach(Game game in rentedGames) //Add each rented game to the rented games list box, displaying the game id and name
             {
                 lbRentedGames.Items.Add(game.id.ToString() + "\t" + game.name + "\n");
             }
@@ -148,19 +155,19 @@ namespace Programming_Project_V5
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close(); //Closes the form
         }
 
         private void LoadCustomers()
         {
-            using(OleDbConnection connect = new OleDbConnection(CStr))
+            using(OleDbConnection connect = new OleDbConnection(CStr)) //Creates a new OleDbConnection using the connection string
             {
-                connect.Open();
+                connect.Open(); //Opens the connection 
 
-                OleDbCommand cmd = new OleDbCommand("SELECT ID, CustFirst, CustLast, CustEmail, CustPhone FROM CustTable ", connect);
-                OleDbDataReader dr = cmd.ExecuteReader();
+                OleDbCommand cmd = new OleDbCommand("SELECT ID, CustFirst, CustLast, CustEmail, CustPhone FROM CustTable ", connect); //Creates a command to select all customers from the CustTable 
+                OleDbDataReader dr = cmd.ExecuteReader(); //Execute the command and get a reader to loop through the results
 
-                while (dr.Read())
+                while (dr.Read()) //Loops through each customer record and creates a customer object 
                 {
                     int id = Convert.ToInt32(dr["ID"]);
                     string fName = dr["CustFirst"].ToString();
@@ -169,60 +176,62 @@ namespace Programming_Project_V5
                     string phone = dr["CustPhone"].ToString();
 
                     Customer customer = new Customer(id, fName, lName, email, phone);
-                    lbCustomers.Items.Add(customer);
+                    lbCustomers.Items.Add(customer); //Add the customer object to the list box
                 }
             }
         }
 
         private void lbCustomers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedCustomer = (Customer)lbCustomers.SelectedItem;
+            selectedCustomer = (Customer)lbCustomers.SelectedItem; //Get the selected Customer object from the list box
         }
 
         private void btnSaveRental_Click(object sender, EventArgs e)
         {
-            SaveRental();
-            MessageBox.Show("Renal Successfully saved!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            SaveRental(); //Save the rental information
+            MessageBox.Show("Renal Successfully saved!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information); //Display a message box to indicate that the rental has been saved
 
-
+            //Clear the rental summary list box and text boxes
             lbRentalSummary.Items.Clear();
             txtCustomerID.Clear();
             txtCustomerName.Clear();
             txtTotalPrice.Clear();
 
-            LoadOngoingRentals();
+            LoadOngoingRentals(); //Load the ongoing rentals
         
         }
 
 
         private void btnNextPg2_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedTab = tabRentalSummary;
+            tabControl1.SelectedTab = tabRentalSummary; //Switch to the rental summary tab
 
-            txtCustomerName.Text = selectedCustomer.FirstName + " " + selectedCustomer.LastName;
+            //Gets the customer's name and ID and displays them in the appropriate text boxes
+            txtCustomerName.Text = selectedCustomer.FirstName + " " + selectedCustomer.LastName; 
             txtCustomerID.Text = selectedCustomer.ID.ToString();
 
-            if (selectedCustomer == null)
+            if (selectedCustomer == null) //Check if a customer has been selected
             {
                 MessageBox.Show("Please select a customer.");
                 return;
             }
 
-            if (rentedGames.Count == 0)
+            if (rentedGames.Count == 0) //Check if at least one game has been rented
             {
                 MessageBox.Show("Please select at least one game to rent.");
                 return;
             }
 
-            decimal totalPrice = 0;
+            decimal totalPrice = 0; //To calculate the total rental price
 
-            using (OleDbConnection connect = new OleDbConnection(CStr))
+            using (OleDbConnection connect = new OleDbConnection(CStr)) //Creates a new OleDbConnection using the connection string
             {
-                connect.Open();
+                connect.Open(); //Opens the connection
 
-                foreach (Game game in rentedGames)
+                foreach (Game game in rentedGames) //Loops through each rented game
                 {
-                    OleDbCommand cmd = new OleDbCommand("SELECT GameRentPrice FROM GameTable WHERE ID=@ID", connect);
+                    //Retrieve the rental price for the current game in the database using its ID
+                    OleDbCommand cmd = new OleDbCommand("SELECT GameRentPrice FROM GameTable WHERE ID=@ID", connect); 
                     cmd.Parameters.AddWithValue("@ID", game.id);
                     OleDbDataReader dr = cmd.ExecuteReader();
                     if (dr.Read())
@@ -230,37 +239,45 @@ namespace Programming_Project_V5
                         decimal price = Convert.ToDecimal(dr["GameRentPrice"]);
                         totalPrice += price;
                     }
+                    //Add the current game's name to the rental summary list box
                     lbRentalSummary.Items.Add(game.name);
                 }
             }
+            //Displays the total rental price in the textbox
             txtTotalPrice.Text = "Total Price: £" + totalPrice.ToString() + ".00";
         }
 
         private void SaveRental()
         {
-            using(OleDbConnection connect = new OleDbConnection(CStr))
+            using(OleDbConnection connect = new OleDbConnection(CStr)) //Creates a new OleDbConnection using the connection string
             {
-                connect.Open();
-                Customer customer = (Customer)lbCustomers.SelectedItem;
+                connect.Open(); //Opens the connection
+                Customer customer = (Customer)lbCustomers.SelectedItem; //Get the selected customer from the list box
 
-                decimal dbTotalPrice = 0;
+                decimal dbTotalPrice = 0; //Create a variable to hold the total rental price
+                //Loop through each rented game and get its rental price from the database
                 foreach(Game game in rentedGames)
                 {
                     OleDbCommand cmd = new OleDbCommand("SELECT GameRentPrice FROM GameTable WHERE ID=@ID", connect);
                     cmd.Parameters.AddWithValue("@ID", game.id);
                     dbTotalPrice += Convert.ToDecimal(cmd.ExecuteScalar());
 
+                    //Update the GameTable to update the stock of the rented game
                     OleDbCommand UpdateStock = new OleDbCommand("UPDATE GameTable SET GameStock = GameStock - 1 WHERE ID=@id", connect);
                     UpdateStock.Parameters.AddWithValue("@id", game.id);
                     UpdateStock.ExecuteNonQuery();
                 }
 
+                //Generate a random LoanID for the rental 
                 Random random = new Random();
                 int LoanID = random.Next(10000000, 99999999);
 
+
+                //Get the current date and due date for the rental
                 DateTime dateOut = DateTime.Now.Date;
                 DateTime dateDue = dateOut.AddDays(21).Date;
 
+                //Insert the rental into the RentalTable in the database
                 OleDbCommand command = new OleDbCommand("INSERT INTO RentalTable (ID, CustomerName, CustomerPhone, EmployeeID, TotalPrice, DateOut, DateDue) VALUES (@ID, @name, @phone, @empid, @price, @dateout, @datedue)", connect);
                 command.Parameters.AddWithValue("@ID", LoanID);
                 command.Parameters.AddWithValue("@name", txtCustomerName.Text);
@@ -279,17 +296,17 @@ namespace Programming_Project_V5
 
         private void btnNextPg1_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedTab = tabSelectCustomer;
+            tabControl1.SelectedTab = tabSelectCustomer; //Move to the next tab
         }
 
         private void btnBackPg3_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedTab = tabSelectCustomer;
+            tabControl1.SelectedTab = tabSelectCustomer; //Go to the previous tab
         }
 
         private void btnBackPg2_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedTab = tabSelectGames;
+            tabControl1.SelectedTab = tabSelectGames; //Go to the previous tab
         }
     }
 
