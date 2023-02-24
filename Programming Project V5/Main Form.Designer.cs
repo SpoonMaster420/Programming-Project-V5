@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.btnLogout = new System.Windows.Forms.Button();
             this.lblUserLoggedIn = new System.Windows.Forms.Label();
@@ -40,6 +41,7 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.btnGames = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.preferencesToolStripMenuitem.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -156,6 +158,10 @@
             this.btnGames.UseVisualStyleBackColor = true;
             this.btnGames.Click += new System.EventHandler(this.btnGames_Click);
             // 
+            // timer1
+            // 
+            
+            // 
             // Main_Form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -192,5 +198,6 @@
         private ToolStripButton toolStripButton3;
         private ColorDialog colorDialog1;
         private Button btnGames;
+        private System.Windows.Forms.Timer timer1;
     }
 }

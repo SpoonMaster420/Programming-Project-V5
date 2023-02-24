@@ -7,7 +7,7 @@ namespace Programming_Project_V5
 {
     public partial class Main_Form : Form
     {
-        //Declars private fields for settings and timer
+        //Declare private fields for settings and timer
         private Settings settings;
         private System.Windows.Forms.Timer timer;
         public Main_Form()
@@ -138,6 +138,7 @@ namespace Programming_Project_V5
             Games games = new Games();  //New Instance of the Games Form    
             games.Show(); //Shows the Games Form
         }
+
     }
 
     }

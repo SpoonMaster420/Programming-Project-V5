@@ -23,7 +23,7 @@ namespace Programming_Project_V5
             this.rentalPrice = rentalPrice;
             this.Stock= stock;
         }
-        //This is so the name of the game is shows instead of each object
+        //This is so the name of the game is shown instead of each object
         public override string ToString()
         {
             return name;

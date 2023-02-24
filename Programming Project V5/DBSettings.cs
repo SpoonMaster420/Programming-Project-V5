@@ -9,7 +9,8 @@ namespace Programming_Project_V5
 {
     public static  class DBSettings
     {
-       public static string CString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\carla\\Documents\\A-Level\\Computer Science\\NEA\\DBofAll.mdb"; //Connection string for the database
+        //public static string CString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\carla\\Documents\\A-Level\\Computer Science\\NEA\\DBofAll.mdb"; //Connection string for the database
+        public static string CString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=..\\..\\..\\..\\DBofAll.mdb";
        public static OleDbConnection connection = new OleDbConnection(CString); //Database connection object
     }
 

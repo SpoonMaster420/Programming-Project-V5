@@ -29,7 +29,7 @@ namespace Programming_Project_V5
             this.BackColor = this.settings.bcolor;
             this.ForeColor = this.settings.fcolor;
 
-            //Creats a connection to the database and populates the ComboBox with all the Game IDs
+            //Creates a connection to the database and populates the ComboBox with all the Game IDs
             using (OleDbConnection connect = new OleDbConnection(Cstr))
             {
                 connect.Open();

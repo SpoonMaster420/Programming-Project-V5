@@ -52,7 +52,7 @@ namespace Programming_Project_V5
                 }
                 else
                 {
-                    MessageBox.Show("Login Failed!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); //DIsplays an Error message 
+                    MessageBox.Show("Login Failed!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); //Displays an Error message 
                     txtEmpFirst.Clear();
                     txtEmpID.Clear();  //Clears the contents of the two Text boxes
                 }
