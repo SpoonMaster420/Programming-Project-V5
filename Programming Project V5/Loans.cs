@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -19,6 +20,7 @@ namespace Programming_Project_V5
 
         private List<Game> availableGames;
         private List<Game> rentedGames;
+        private List<Game> summaryGames;
 
         string CStr = DBSettings.CString; //Store the connection string in a private variable
 
@@ -36,6 +38,7 @@ namespace Programming_Project_V5
             //Initialise the availableGames and rentedGames lists
             availableGames = new List<Game>();
             rentedGames = new List<Game>();
+            summaryGames = new List<Game> ();
 
         }
 
@@ -111,6 +114,7 @@ namespace Programming_Project_V5
             //Remove the selected game from the available games list and move it to the rented games list
             availableGames.Remove(selectedGame);
             rentedGames.Add(selectedGame);
+            summaryGames.Add(selectedGame);
 
             updateListBoxes(); //Update the list boxes to show the changes
 
@@ -130,6 +134,7 @@ namespace Programming_Project_V5
             //Remove the selected game from the rented games list and add it to the available games list
             rentedGames.Remove(selectedGame);
             availableGames.Add(selectedGame);
+            summaryGames.Remove(selectedGame);
 
             updateListBoxes(); //Update the list boxes to show the changes 
            
@@ -140,6 +145,7 @@ namespace Programming_Project_V5
             //Clear the items in both list boxes 
             lbAvailableGames.Items.Clear();
             lbRentedGames.Items.Clear();
+            lbRentalSummary.Items.Clear();
 
             foreach(Game game in availableGames) //Add each available game to the available games list box, displaying the game id and name
             {
@@ -149,6 +155,10 @@ namespace Programming_Project_V5
             foreach(Game game in rentedGames) //Add each rented game to the rented games list box, displaying the game id and name
             {
                 lbRentedGames.Items.Add(game.id.ToString() + "\t" + game.name + "\n");
+            }
+            foreach(Game game in summaryGames)
+            {
+                lbRentalSummary.Items.Add(game.id.ToString() + "\t" + game.name + "\n");
             }
             
         }
@@ -189,7 +199,7 @@ namespace Programming_Project_V5
         private void btnSaveRental_Click(object sender, EventArgs e)
         {
             SaveRental(); //Save the rental information
-            MessageBox.Show("Renal Successfully saved!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information); //Display a message box to indicate that the rental has been saved
+            MessageBox.Show("Rental Successfully saved!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information); //Display a message box to indicate that the rental has been saved
 
             //Clear the rental summary list box and text boxes
             lbRentalSummary.Items.Clear();
@@ -205,6 +215,8 @@ namespace Programming_Project_V5
         private void btnNextPg2_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = tabRentalSummary; //Switch to the rental summary tab
+
+            updateListBoxes();
 
             //Gets the customer's name and ID and displays them in the appropriate text boxes
             txtCustomerName.Text = selectedCustomer.FirstName + " " + selectedCustomer.LastName; 
@@ -228,7 +240,7 @@ namespace Programming_Project_V5
             {
                 connect.Open(); //Opens the connection
 
-                foreach (Game game in rentedGames) //Loops through each rented game
+                foreach (Game game in summaryGames) //Loops through each rented game
                 {
                     //Retrieve the rental price for the current game in the database using its ID
                     OleDbCommand cmd = new OleDbCommand("SELECT GameRentPrice FROM GameTable WHERE ID=@ID", connect); 
@@ -240,7 +252,7 @@ namespace Programming_Project_V5
                         totalPrice += price;
                     }
                     //Add the current game's name to the rental summary list box
-                    lbRentalSummary.Items.Add(game.name);
+                    //lbRentalSummary.Items.Add(game.name);
                 }
             }
             //Displays the total rental price in the textbox
@@ -256,7 +268,7 @@ namespace Programming_Project_V5
 
                 decimal dbTotalPrice = 0; //Create a variable to hold the total rental price
                 //Loop through each rented game and get its rental price from the database
-                foreach(Game game in rentedGames)
+                foreach(Game game in summaryGames)
                 {
                     OleDbCommand cmd = new OleDbCommand("SELECT GameRentPrice FROM GameTable WHERE ID=@ID", connect);
                     cmd.Parameters.AddWithValue("@ID", game.id);
@@ -307,6 +319,11 @@ namespace Programming_Project_V5
         private void btnBackPg2_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = tabSelectGames; //Go to the previous tab
+        }
+
+        private void tabRentalSummary_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

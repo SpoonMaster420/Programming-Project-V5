@@ -204,13 +204,16 @@
             this.tabRentalSummary.Padding = new System.Windows.Forms.Padding(3);
             this.tabRentalSummary.Size = new System.Drawing.Size(925, 554);
             this.tabRentalSummary.TabIndex = 2;
-            this.tabRentalSummary.Text = "Rental Summary";
+            this.tabRentalSummary.Text = "                                                                                 " +
+    "                                                                   ";
             this.tabRentalSummary.UseVisualStyleBackColor = true;
+            this.tabRentalSummary.Click += new System.EventHandler(this.tabRentalSummary_Click);
             // 
             // txtCustomerID
             // 
             this.txtCustomerID.Location = new System.Drawing.Point(747, 98);
             this.txtCustomerID.Name = "txtCustomerID";
+            this.txtCustomerID.ReadOnly = true;
             this.txtCustomerID.Size = new System.Drawing.Size(172, 23);
             this.txtCustomerID.TabIndex = 10;
             // 
@@ -218,6 +221,7 @@
             // 
             this.txtCustomerName.Location = new System.Drawing.Point(747, 44);
             this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.ReadOnly = true;
             this.txtCustomerName.Size = new System.Drawing.Size(172, 23);
             this.txtCustomerName.TabIndex = 9;
             // 
@@ -263,6 +267,7 @@
             // 
             this.txtTotalPrice.Location = new System.Drawing.Point(734, 492);
             this.txtTotalPrice.Name = "txtTotalPrice";
+            this.txtTotalPrice.ReadOnly = true;
             this.txtTotalPrice.Size = new System.Drawing.Size(183, 23);
             this.txtTotalPrice.TabIndex = 1;
             // 
